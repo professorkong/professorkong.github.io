@@ -1,0 +1,19 @@
+.container{
+    color: white;
+    background: #000;
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+    margin: 30px;
+}
+.container h1{
+    text-align: center;
+    margin: 50px;
+}
+.allcontent {
+    height:  400px;
+    width: 400px;
+    padding: 30px;
+    margin: 30px;
+    background: red;
+}
