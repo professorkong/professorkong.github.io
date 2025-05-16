@@ -132,17 +132,25 @@
       cursor: pointer;
     }
 
-    @media (max-width: 768px) {
+        @media (max-width: 768px) {
       .sidebar img {
         max-width: 180px;
-        height: 180px; 
+        height: 180px;
       }
+
       .container {
         flex-direction: column;
         padding: 10px;
       }
 
-      .sidebar, .main {
+      .sidebar,
+      .main {
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .sidebar img {
         width: 150px;
         margin: 0 auto;
       }
