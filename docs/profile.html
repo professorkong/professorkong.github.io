@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -10,14 +10,12 @@
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
+      font-family: 'Merriweather', serif;
       background: #f9f9f9;
       color: #333;
       scroll-behavior: smooth;
-      font-family: 'Merriweather', serif;
     }
 
-    /* NAVIGATION BAR */
     .navbar {
       background-color: #003366;
       color: white;
@@ -57,14 +55,14 @@
     }
 
     .sidebar img {
-  width: 100%;
-  max-width: 180px;
-  height: 220px;              /* รักษาสัดส่วนของรูป */
-  border-radius: 50%;        /* ทำให้เป็นวงกลม */
-  object-fit: cover;         /* ครอบเฉพาะตอนเป็นรูปตัดขอบ (เช่นภาพไม่พอดีกรอบ) */
-  display: block;
-  margin: 0 auto;
-}
+      width: 100%;
+      max-width: 180px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+    }
 
     .sidebar h2 {
       margin-bottom: 10px;
@@ -92,8 +90,9 @@
       margin-top: 30px;
     }
 
-    .main p {
+    .main p, .main li {
       line-height: 1.6;
+      font-size: 15px;
     }
 
     .main ul {
@@ -109,55 +108,41 @@
       text-decoration: underline;
     }
 
-    .news li {
-      margin-bottom: 8px;
-    }
     .clean-link {
-  text-decoration: none; /* ไม่ขีดเส้นใต้ */
-  color: inherit;        /* ใช้สีเดียวกับข้อความปกติ */
-  font-weight: normal;   /* ไม่ทำตัวหนา */ 
-  font-size: 14px;
-  color: #333;
+      text-decoration: none;
+      color: inherit;
+      font-weight: normal;
+      font-size: 14px;
+      color: #333;
     }
-    .clean-link {
-  text-decoration: none;  /* ไม่ขีดเส้นใต้ปกติ */
-  color: inherit;
-  font-weight: normal;
-}
 
-.clean-link:hover {
-  text-decoration: none;  /* ไม่ขีดเส้นใต้เวลาวางเมาส์ */
-  cursor: pointer;        /* เปลี่ยนเป็นมือชี้ เพื่อบอกว่าเป็นลิงก์ */
-}
-@media (max-width: 768px) {
+    .clean-link:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
       .sidebar img {
-      max-width: 180px;
-      height: 180px; 
+        max-width: 180px;
+        height: 180px; 
       }
       .container {
         flex-direction: column;
         padding: 10px;
       }
 
-      .sidebar,
-      .main {
+      .sidebar, .main {
         width: 100%;
         padding: 10px;
         text-align: center;
-      }
-
-      .sidebar img {
-        width: 150px;
-        margin: 0 auto;
       }
 
       .main {
         text-align: left;
       }
     }
-
   </style>
-<script>
+  <script>
   window.addEventListener("DOMContentLoaded", function () {
     // 1. ตรวจสอบว่ามาจาก index.html หรือไม่
     const fromIndex = document.referrer.includes("index.html");
@@ -199,8 +184,6 @@
 </script>
 </head>
 <body>
-
-  <!-- NAVIGATION -->
   <div class="navbar">
     <a href="index.html">Home</a>
     <a href="profile.html">Curriculum Vitae</a>
@@ -209,17 +192,14 @@
   </div>
 
   <div class="container">
-    <!-- Sidebar -->
     <div class="sidebar">
-      <img src="https://media.discordapp.net/attachments/932970063718387763/1372604604629651499/191715117_1928565580624746_4757216515084905256_n.png?ex=68276127&is=68260fa7&hm=8b866eaaeb2c54766b85d3ea3aef2ff7252877ce13d67eff15eb523acca60650&=&format=webp&quality=lossless" alt="Profile Photo" draggable="false">
+      <img src="https://media.discordapp.net/attachments/932970063718387763/1372604604629651499/191715117_1928565580624746_4757216515084905256_n.png?ex=68276127&is=68260fa7&hm=8b866eaaeb2c54766b85d3ea3aef2ff7252877ce13d67eff15eb523acca60650&=&format=webp&quality=lossless" alt="Profile Photo">
       <h2>Mr.Kongpob Ontong (Bs.C.)</h2>
       <p>Software Test Engineer</p>
-      <a href="https://www.ttbbank.com" class="clean-link" target="_blank">
-        TMBThanachart Bank (ttb bank)
-      </a>
+      <a href="https://www.ttbbank.com" class="clean-link" target="_blank">TMBThanachart Bank (ttb bank)</a>
       <p>Nonthaburi, Thailand</p>
       <p>Email: kongpob.on@gmail.com</p>
-      <div class="icons">
+     <div class="icons">
         <a href="https://facebook.com/kkongpobb/" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://instagram.com/1404_k/" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://github.com/professorkong" target="_blank"><i class="fab fa-github"></i></a>
@@ -227,38 +207,41 @@
       </div>
     </div>
 
-    <!-- Main Content -->
     <div class="main">
-      <h3 id="about">About Me</h3>
-      <p>
-        Passionate Software Engineer with a strong interest in software testing,<br>
-        image processing, and artificial intelligence. I enjoy designing and evaluating<br>
-        reliable testing workflows, building robust systems, and exploring the intersection
-        between computer vision and machine learning.
-      </p>
-      
-      <p>
-        With a detail-oriented mindset and hands-on experience in real-world AI applications, I strive to develop accurate and efficient solutions that are both practical and scalable. I am particularly interested in applying image processing techniques to solve complex visual problems and ensure software quality through test automation and data-driven validation.
-      </p>
+      <h3 id="cv">Curriculum Vitae</h3>
 
-      <h3 id="cv">Interests</h3>
+      <h4>Work Experiences</h4>
+        <ul>
+        <li><strong>TMBThanachart Bank (ttb bank) (May 2025 - Present)</strong><br>
+        Test Engineer Role : responsible for testing mission-critical banking systems, performing test case design, system integration testing (SIT), and ensuring software quality in collaboration with cross-functional teams.
+</li>
+      </ul>
       <ul>
-        <li>AI, Image processing, Testing</li>
+        <li><strong>G-Able Company (Jul 2024 - Dec 2024)</strong><br>
+        Internship Role : Software Tester for the TFEM Program (AIS Project), testing enterprise features and system integration for AIS systems.</li>
       </ul>
 
-      <h3 id="news">News</h3>
-      <ul class="news">
-        <li>📌 <a href="news.html">[May 1, 2025] » First Jobber @ TTB</a></li>
-        <li><a href="news.html">[Apr 10, 2025] » Ran 5K with a time of 18 minutes and 57 seconds.</a></li>
-      </ul>
-
-      <h3 id="articles">Articles / Projects</h3>
+      <h4>Educations</h4>
       <ul>
-        <li>Website for generating 3D models from 2D images </li>
-        <li>Training for a Sub-40 10K Using Polarized Training</li>
+        <li><strong>Bachelor of Science in Information Technology</strong><br>
+        King Mongkut's Institute of Technology Ladkrabang (KMITL), Class of 19<br>
+        GPA: 3.xx</li>
       </ul>
+
+      <h4>Publications</h4>
+      <ul>
+        <li><strong>Senior Project:</strong> Website for generating 3D models from 2D images — Developed a tool that uses AI to create 3D models from 2D images for various applications in graphics and modeling.</li>
+      </ul>
+
+      <h4>Honors & Awards</h4>
+      <ul>
+        <li>🥉 3rd Place – 12.5K Running Competition</li>
+        <li>🏅 4th Place – 10K Run, Time: 45:15</li>
+        <li>🥈 2nd Place – 5K Run, Time: 18:57</li>
+        <li>🥈 2nd Place – 5K Run, Time: 19:19</li>
+      </ul>
+
     </div>
   </div>
-
 </body>
 </html>
