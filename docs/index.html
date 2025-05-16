@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="favicon.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KONGPOB ONTONG | Resume</title>
   <style>
     body {
       margin: 0;
-      font-family: "Segoe UI", sans-serif;
+      font-family: 'Merriweather', serif;
       background: #f9f9f9;
       color: #333;
       scroll-behavior: smooth;
-      font-family: 'Merriweather', serif;
     }
 
     /* NAVIGATION BAR */
@@ -39,24 +39,28 @@
     .navbar a:hover {
       text-decoration: underline;
     }
-    .image-container {
-  position: relative;
-  display: inline-block;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none; /* ป้องกันเมนูคลิกขวา iOS */
-}
 
-.image-container img {
-  pointer-events: none; /* ป้องกันการเลือกและกดภาพ */
-  display: block;
-}
+    .image-container {
+      position: relative;
+      display: inline-block;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      /* ป้องกันเมนูคลิกขวา iOS */
+    }
+
+    .image-container img {
+      pointer-events: none;
+      /* ป้องกันการเลือกและกดภาพ */
+      display: block;
+    }
+
     .container {
       display: flex;
       max-width: 1000px;
       margin: 30px auto;
       background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .sidebar {
@@ -68,14 +72,17 @@
     }
 
     .sidebar img {
-  width: 100%;
-  max-width: 180px;
-  height: 220px;              /* รักษาสัดส่วนของรูป */
-  border-radius: 50%;        /* ทำให้เป็นวงกลม */
-  object-fit: cover;         /* ครอบเฉพาะตอนเป็นรูปตัดขอบ (เช่นภาพไม่พอดีกรอบ) */
-  display: block;
-  margin: 0 auto;
-}
+      width: 100%;
+      max-width: 180px;
+      height: 220px;
+      /* รักษาสัดส่วนของรูป */
+      border-radius: 50%;
+      /* ทำให้เป็นวงกลม */
+      object-fit: cover;
+      /* ครอบเฉพาะตอนเป็นรูปตัดขอบ (เช่นภาพไม่พอดีกรอบ) */
+      display: block;
+      margin: 0 auto;
+    }
 
     .sidebar h2 {
       margin-bottom: 10px;
@@ -123,28 +130,38 @@
     .news li {
       margin-bottom: 8px;
     }
-    .clean-link {
-  text-decoration: none; /* ไม่ขีดเส้นใต้ */
-  color: inherit;        /* ใช้สีเดียวกับข้อความปกติ */
-  font-weight: normal;   /* ไม่ทำตัวหนา */ 
-  font-size: 14px;
-  color: #333;
-    }
-    .clean-link {
-  text-decoration: none;  /* ไม่ขีดเส้นใต้ปกติ */
-  color: inherit;
-  font-weight: normal;
-}
 
-.clean-link:hover {
-  text-decoration: none;  /* ไม่ขีดเส้นใต้เวลาวางเมาส์ */
-  cursor: pointer;        /* เปลี่ยนเป็นมือชี้ เพื่อบอกว่าเป็นลิงก์ */
-}
-@media (max-width: 768px) {
+    .clean-link {
+      text-decoration: none;
+      /* ไม่ขีดเส้นใต้ */
+      color: inherit;
+      /* ใช้สีเดียวกับข้อความปกติ */
+      font-weight: normal;
+      /* ไม่ทำตัวหนา */
+      font-size: 14px;
+      color: #333;
+    }
+
+    .clean-link {
+      text-decoration: none;
+      /* ไม่ขีดเส้นใต้ปกติ */
+      color: inherit;
+      font-weight: normal;
+    }
+
+    .clean-link:hover {
+      text-decoration: none;
+      /* ไม่ขีดเส้นใต้เวลาวางเมาส์ */
+      cursor: pointer;
+      /* เปลี่ยนเป็นมือชี้ เพื่อบอกว่าเป็นลิงก์ */
+    }
+
+    @media (max-width: 768px) {
       .sidebar img {
-      max-width: 180px;
-      height: 180px; 
+        max-width: 180px;
+        height: 180px;
       }
+
       .container {
         flex-direction: column;
         padding: 10px;
@@ -166,49 +183,49 @@
         text-align: left;
       }
     }
-
   </style>
-<script>
-  window.addEventListener("DOMContentLoaded", function () {
-    // 1. ตรวจสอบว่ามาจาก index.html หรือไม่
-    const fromIndex = document.referrer.includes("index.html");
-    const freshLoad = performance.navigation?.type === 1; // reload page
-    if (!fromIndex || freshLoad) {
-      window.location.href = "index.html";
-    }
-
-    // 2. ป้องกันการลากออก (drag)
-    document.addEventListener("dragstart", function (e) {
-      e.preventDefault();
-      return false;
-    });
-
-    // 3. ป้องกันคลิกขวา
-    document.addEventListener("contextmenu", function (e) {
-      e.preventDefault();
-      return false;
-    });
-
-    // 4. ป้องกันการกด Ctrl+S หรือ Cmd+S
-    document.addEventListener("keydown", function (e) {
-      if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 's')) {
-        e.preventDefault();
-        return false;
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      // 1. ตรวจสอบว่ามาจาก index.html หรือไม่
+      const fromIndex = document.referrer.includes("index.html");
+      const freshLoad = performance.navigation?.type === 1; // reload page
+      if (!fromIndex || freshLoad) {
+        window.location.href = "index.html";
       }
-    });
 
-    // 5. ป้องกันลากภาพออกแบบอื่นๆ (เช่นลากภาพจาก img tag)
-    const images = document.querySelectorAll("img");
-    images.forEach(img => {
-      img.setAttribute("draggable", "false");
-      img.addEventListener("dragstart", function(e) {
+      // 2. ป้องกันการลากออก (drag)
+      document.addEventListener("dragstart", function (e) {
         e.preventDefault();
         return false;
       });
+
+      // 3. ป้องกันคลิกขวา
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      // 4. ป้องกันการกด Ctrl+S หรือ Cmd+S
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 's')) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      // 5. ป้องกันลากภาพออกแบบอื่นๆ (เช่นลากภาพจาก img tag)
+      const images = document.querySelectorAll("img");
+      images.forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.addEventListener("dragstart", function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
     });
-  });
-</script>
+  </script>
 </head>
+
 <body>
 
   <!-- NAVIGATION -->
@@ -223,7 +240,9 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <div class="image-container">
-      <img src="https://media.discordapp.net/attachments/932970063718387763/1372604604629651499/191715117_1928565580624746_4757216515084905256_n.png?ex=68276127&is=68260fa7&hm=8b866eaaeb2c54766b85d3ea3aef2ff7252877ce13d67eff15eb523acca60650&=&format=webp&quality=lossless" alt="Profile Photo" draggable="false">
+        <img
+          src="https://media.discordapp.net/attachments/932970063718387763/1372604604629651499/191715117_1928565580624746_4757216515084905256_n.png?ex=68276127&is=68260fa7&hm=8b866eaaeb2c54766b85d3ea3aef2ff7252877ce13d67eff15eb523acca60650&=&format=webp&quality=lossless"
+          alt="Profile Photo" draggable="false">
       </div>
       <h2>Mr.Kongpob Ontong (Bs.C.)</h2>
       <p>Software Test Engineer</p>
@@ -249,9 +268,12 @@
         reliable testing workflows, building robust systems, and exploring the intersection
         between computer vision and machine learning.
       </p>
-      
+
       <p>
-        With a detail-oriented mindset and hands-on experience in real-world AI applications, I strive to develop accurate and efficient solutions that are both practical and scalable. I am particularly interested in applying image processing techniques to solve complex visual problems and ensure software quality through test automation and data-driven validation.
+        With a detail-oriented mindset and hands-on experience in real-world AI applications, I strive to develop
+        accurate and efficient solutions that are both practical and scalable. I am particularly interested in applying
+        image processing techniques to solve complex visual problems and ensure software quality through test automation
+        and data-driven validation.
       </p>
 
       <h3 id="cv">Interests</h3>
@@ -274,4 +296,5 @@
   </div>
 
 </body>
+
 </html>
