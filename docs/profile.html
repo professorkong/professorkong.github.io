@@ -162,12 +162,6 @@
   </style>
   <script>
   window.addEventListener("DOMContentLoaded", function () {
-    // 1. ตรวจสอบว่ามาจาก index.html หรือไม่
-    const fromIndex = document.referrer.includes("index.html");
-    const freshLoad = performance.navigation?.type === 1; // reload page
-    if (!fromIndex || freshLoad) {
-      window.location.href = "index.html";
-    }
 
     // 2. ป้องกันการลากออก (drag)
     document.addEventListener("dragstart", function (e) {
@@ -212,7 +206,7 @@
   <div class="container">
     <div class="sidebar">
     <div class="image-container">
-      <img src="https://media.discordapp.net/attachments/932970063718387763/1372604604629651499/191715117_1928565580624746_4757216515084905256_n.png?ex=68276127&is=68260fa7&hm=8b866eaaeb2c54766b85d3ea3aef2ff7252877ce13d67eff15eb523acca60650&=&format=webp&quality=lossless" alt="Profile Photo" draggable="false">
+      <img src="Profile.jpg" alt="Profile Photo" draggable="false">
     </div>
       <h2>Mr.Kongpob Ontong (Bs.C.)</h2>
       <p>Software Test Engineer</p>
