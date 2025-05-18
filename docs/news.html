@@ -2,172 +2,254 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="icon" href="favicon.png" type="image/png" />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KONGPOB ONTONG | News</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Merriweather', serif;
-            background: #f9f9f9;
-            color: #333;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KONGPOB ONTONG | News</title>
+  <style>
+    html, body {
+  overflow-x: hidden;
+}
+    body {
+      margin: 0;
+      font-family: 'Merriweather', serif;
+      background: #f9f9f9;
+      color: #333;
+      scroll-behavior: smooth;
+    }
 
-        .navbar {
-            background-color: #003366;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 20px;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-        }
+    .navbar {
+      background-color: #003366;
+      color: white;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+    }
 
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 16px;
-        }
+    .navbar a {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      font-size: 14px;
+    }
 
-        .navbar a:hover {
-            text-decoration: underline;
-        }
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.3);
+      z-index: 0;
+      transition: width 0.4s ease;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background: #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            border-radius: 8px;
-        }
+    .navbar a:hover::after {
+      width: 100%;
+    }
 
-        h1 {
-            color: #003366;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: 700;
-        }
+    .navbar a:hover {
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+    }
 
-        .news-item {
-            background: #f0f4f8;
-            border: 1px solid #ddd;
-            padding: 25px 30px;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
-        }
+    #theme-toggle {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 20px;
+      padding: 4px 8px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      line-height: 1;
+    }
 
-        .news-item h3 {
-            margin-top: 0;
-            color: #003366;
-            font-weight: 700;
-            font-size: 22px;
-        }
+    #theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
 
-        .news-item p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 16px;
-            color: #222;
-        }
+    #theme-toggle:active {
+      transform: rotate(20deg) scale(1.1);
+    }
 
-        .news-item a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-        }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      border-radius: 8px;
+    }
 
-        .news-item a:hover {
-            text-decoration: underline;
-        }
+    h1 {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
 
-        iframe {
-            width: 100%;
-            height: 315px;
-            border: none;
-            margin-top: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    .news-item {
+      background: #f0f4f8;
+      border: 1px solid #ddd;
+      padding: 25px 30px;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .news-item h3 {
+      margin-top: 0;
+      color: #003366;
+      font-weight: 700;
+      font-size: 22px;
+    }
+
+    .news-item p {
+      line-height: 1.6;
+      margin-bottom: 15px;
+      font-size: 16px;
+      color: #222;
+    }
+
+    .news-item a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .news-item a:hover {
+      text-decoration: underline;
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border: none;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .dark-mode .navbar {
+      background-color: #222;
+      color: white;
+    }
+
+    .dark-mode .navbar a {
+      color: white;
+    }
+
+    .dark-mode .container {
+      background-color: #1e1e1e;
+      color: #eee;
+    }
+
+    .dark-mode .news-item {
+      background-color: #2a2a2a;
+      border-color: #444;
+    }
+
+    .dark-mode .news-item h3 {
+      color: #66ccff;
+    }
+
+    .dark-mode .news-item p,
+    .dark-mode .news-item a {
+      color: #ddd;
+    }
+
+    .dark-mode h1 {
+      color: #ffffff;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="profile.html">Curriculum Vitae</a>
+    <a href="news.html">News</a>
+    <a href="articles.html">Articles</a>
+  </div>
 
-    <!-- NAVIGATION -->
-    <div class="navbar">
-        <a href="index.html">Home</a>
-        <a href="profile.html">Curriculum Vitae</a>
-        <a href="news.html">News</a>
-        <a href="articles.html">Articles</a>
+  <div class="container">
+    <h1>Latest News & Updates</h1>
+
+    <div class="news-item">
+      <h3>📌 May 1, 2025 — First Day at TTB Bank</h3>
+      <p>I officially started my journey as a Software Test Engineer at TMBThanachart Bank (ttb bank)...</p>
+      <iframe src="https://www.youtube.com/embed/7VHQ5CllNss" allowfullscreen></iframe>
     </div>
 
-    <div class="container">
-        <h1>Latest News & Updates</h1>
-
-        <div class="news-item">
-            <h3>📌 May 1, 2025 — First Day at TTB Bank</h3>
-            <p>
-                I officially started my journey as a Software Test Engineer at TMBThanachart Bank (ttb bank). Excited
-                and motivated, I am ready to dive deep into the systems and contribute to enhancing software quality and
-                reliability. This is a significant milestone in my career, and I aim to deliver impactful results for
-                the team and organization.
-            </p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/7VHQ5CllNss"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-
-        </div>
-
-        <div class="news-item">
-            <h3>🏃‍♂️ April 10, 2025 — Personal Best: 5K in 18:57</h3>
-            <p>
-                Achieved a new personal record running 5 kilometers in just 18 minutes and 57 seconds. This milestone
-                fuels my determination as I prepare to conquer a sub-40 minute 10K race later this year. The journey
-                towards peak fitness and speed continues.
-            </p>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/59bqvpwB63c"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen></iframe>
-        </div>
-
-        <div class="news-item">
-            <h3>🔧 February 28, 2025 — 3D Model Generation from 2D Images Project</h3>
-            <p>
-                Developed a cutting-edge website that transforms 2D images into 3D models using advanced machine
-                learning techniques. This project aims to support designers and gamers by providing an innovative tool
-                to create precise 3D assets. The platform is currently under rigorous testing and refinement.
-            </p>
-            <a href="https://poligon-mkk.vercel.app/" target="_blank" rel="noopener noreferrer">
-                Explore the project on Website
-            </a>
-        </div>
-
-        <div class="news-item">
-            <h3>🎤 March 15, 2025 — AI & Image Processing Seminar Speaker</h3>
-            <p>
-                Had the privilege to speak at a seminar focused on the application of Artificial Intelligence and Image
-                Processing in software testing. The event was very well received, and I’m proud to have shared insights
-                and exchanged knowledge with fellow tech enthusiasts and professionals.
-            </p>
-            <a href="https://www.youtube.com/watch?v=example2" target="_blank" rel="noopener noreferrer">
-                Watch the seminar recording
-            </a>
-        </div>
-
+    <div class="news-item">
+      <h3>🏃‍♂️ April 10, 2025 — Personal Best: 5K in 18:57</h3>
+      <p>Achieved a new personal record running 5 kilometers in just 18 minutes and 57 seconds...</p>
+      <iframe src="https://www.youtube.com/embed/59bqvpwB63c" allowfullscreen></iframe>
     </div>
 
+    <div class="news-item">
+      <h3>🔧 February 28, 2025 — 3D Model Generation from 2D Images Project</h3>
+      <p>Developed a cutting-edge website that transforms 2D images into 3D models...</p>
+      <a href="https://poligon-mkk.vercel.app/" target="_blank">Explore the project on Website</a>
+    </div>
+
+    <div class="news-item">
+      <h3>🎤 March 15, 2025 — AI & Image Processing Seminar Speaker</h3>
+      <p>Had the privilege to speak at a seminar focused on AI and Image Processing in testing...</p>
+      <a href="https://www.youtube.com/watch?v=example2" target="_blank">Watch the seminar recording</a>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      const toggleButton = document.createElement('button');
+      toggleButton.id = 'theme-toggle';
+      toggleButton.textContent = '🌙';
+      toggleButton.setAttribute('aria-label', 'Toggle Dark Mode');
+      document.querySelector('.navbar').appendChild(toggleButton);
+
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️';
+      }
+
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        toggleButton.style.transform = 'rotate(360deg)';
+        setTimeout(() => { toggleButton.style.transform = ''; }, 300);
+        const isDark = document.body.classList.contains('dark-mode');
+        toggleButton.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+    });
+  </script>
 </body>
 
 </html>

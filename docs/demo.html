@@ -8,9 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KONGPOB ONTONG | Resume</title>
   <style>
-    html, body {
-  overflow-x: hidden;
-}
     body {
       margin: 0;
       font-family: 'Merriweather', serif;
@@ -31,7 +28,6 @@
       top: 0;
       z-index: 999;
       flex-wrap: wrap;
-      box-sizing: border-box;
     }
 
     .navbar a {
@@ -45,7 +41,6 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
-      font-size: 14px;
     }
 
     .navbar a::after {
@@ -68,7 +63,6 @@
       color: #fff;
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-      text-decoration: none;
     }
 
     #theme-toggle {
@@ -127,9 +121,7 @@
     .dark-mode a {
       color: #66ccff;
     }
-    .dark-mode .sidebar .icons a {
-  color: white !important;
-}
+
     .image-container {
       position: relative;
       display: inline-block;
@@ -253,33 +245,73 @@
       }
     }
   </style>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      const toggleButton = document.createElement('button');
+      toggleButton.id = 'theme-toggle';
+      toggleButton.textContent = '🌙';
+      toggleButton.setAttribute('aria-label', 'Toggle Dark Mode');
+      document.querySelector('.navbar').appendChild(toggleButton);
 
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️';
+      }
+
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        toggleButton.style.transform = 'rotate(360deg)';
+        setTimeout(() => { toggleButton.style.transform = ''; }, 300);
+        const isDark = document.body.classList.contains('dark-mode');
+        toggleButton.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 's')) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      const images = document.querySelectorAll("img");
+      images.forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.addEventListener("dragstart", function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    });
+  </script>
+</head>
 <body>
-
-  <!-- NAVIGATION -->
   <div class="navbar">
     <a href="index.html">Home</a>
     <a href="profile.html">Curriculum Vitae</a>
     <a href="news.html">News</a>
     <a href="articles.html">Articles</a>
-    <button id="theme-toggle" aria-label="Toggle Dark Mode">
-  🌙
-</button>
   </div>
 
   <div class="container">
-    <!-- Sidebar -->
     <div class="sidebar">
       <div class="image-container">
-        <img
-          src="Profile.jpg"
-          alt="Profile Photo" draggable="false">
+        <img src="Profile.jpg" alt="Profile Photo" draggable="false">
       </div>
       <h2>Mr.Kongpob Ontong (Bs.C.)</h2>
       <p>Software Test Engineer</p>
-      <a href="https://www.ttbbank.com" class="clean-link" target="_blank">
-        TMBThanachart Bank (ttb bank)
-      </a>
+      <a href="https://www.ttbbank.com" class="clean-link" target="_blank">TMBThanachart Bank (ttb bank)</a>
       <p>Nonthaburi, Thailand</p>
       <p>Email: kongpob.on@gmail.com</p>
       <div class="icons">
@@ -290,104 +322,42 @@
       </div>
     </div>
 
-    <!-- Main Content -->
     <div class="main">
-      <h3 id="about">About Me</h3>
-      <p>
-        Passionate Software Engineer with a strong interest in software testing,<br>
-        image processing, and artificial intelligence. I enjoy designing and evaluating<br>
-        reliable testing workflows, building robust systems, and exploring the intersection
-        between computer vision and machine learning.
-      </p>
+      <h3 id="cv">Curriculum Vitae</h3>
 
-      <p>
-        With a detail-oriented mindset and hands-on experience in real-world AI applications, I strive to develop
-        accurate and efficient solutions that are both practical and scalable. I am particularly interested in applying
-        image processing techniques to solve complex visual problems and ensure software quality through test automation
-        and data-driven validation.
-      </p>
-
-      <h3 id="cv">Interests</h3>
+      <h4>Work Experiences</h4>
       <ul>
-        <li>AI, Image processing, Testing</li>
+        <li><strong>TMBThanachart Bank (ttb bank) (May 2025 - Present)</strong><br>
+          Test Engineer Role : responsible for testing mission-critical banking systems, performing test case design, system integration testing (SIT), and ensuring software quality in collaboration with cross-functional teams.
+        </li>
+      </ul>
+      <ul>
+        <li><strong>G-Able Company (Jul 2024 - Dec 2024)</strong><br>
+          Internship Role : Software Tester for the TFEM Program (AIS Project), testing enterprise features and system integration for AIS systems.
+        </li>
       </ul>
 
-      <h3 id="news">News</h3>
-      <ul class="news">
-        <li>📌 <a href="news.html">[May 1, 2025] » First Jobber @ TTB</a></li>
-        <li><a href="news.html">[Apr 10, 2025] » Ran 5K with a time of 18 minutes and 57 seconds.</a></li>
+      <h4>Educations</h4>
+      <ul>
+        <li><strong>Bachelor of Science in Information Technology</strong><br>
+          King Mongkut's Institute of Technology Ladkrabang (KMITL), Class of 19<br>
+          GPA: 3.xx
+        </li>
       </ul>
 
-      <h3 id="articles">Articles / Projects</h3>
+      <h4>Publications</h4>
       <ul>
-        <li>Website for generating 3D models from 2D images </li>
-        <li>Training for a Sub-40 10K Using Polarized Training</li>
+        <li><strong>Senior Project:</strong> Website for generating 3D models from 2D images — Developed a tool that uses AI to create 3D models from 2D images for various applications in graphics and modeling.</li>
+      </ul>
+
+      <h4>Honors & Awards</h4>
+      <ul>
+        <li>🥉 3rd Place – 12.5K Running Competition</li>
+        <li>🏅 4th Place – 10K Run, Time: 45:15</li>
+        <li>🥇 2nd Place – 5K Run, Time: 18:57</li>
+        <li>🥇 2nd Place – 5K Run, Time: 19:19</li>
       </ul>
     </div>
   </div>
-  <script>
-      const toggleButton = document.getElementById('theme-toggle');
-  const currentTheme = localStorage.getItem('theme');
-
-  // Apply saved theme
-  if (currentTheme === 'dark') {
-    document.body.classList.add('dark-mode');
-    toggleButton.textContent = '☀️';
-  }
-
-  toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-
-    // animation effect
-    toggleButton.style.transform = 'rotate(360deg)';
-    setTimeout(() => {
-      toggleButton.style.transform = '';
-    }, 300);
-
-    const isDark = document.body.classList.contains('dark-mode');
-    toggleButton.textContent = isDark ? '☀️' : '🌙';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  });
-    window.addEventListener("DOMContentLoaded", function () {
-      // 1. ตรวจสอบว่ามาจาก index.html หรือไม่
-      const fromIndex = document.referrer.includes("index.html");
-      const freshLoad = performance.navigation?.type === 1; // reload page
-      if (!fromIndex || freshLoad) {
-        window.location.href = "index.html";
-      }
-
-      // 2. ป้องกันการลากออก (drag)
-      document.addEventListener("dragstart", function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      // 3. ป้องกันคลิกขวา
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-        return false;
-      });
-
-      // 4. ป้องกันการกด Ctrl+S หรือ Cmd+S
-      document.addEventListener("keydown", function (e) {
-        if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 's')) {
-          e.preventDefault();
-          return false;
-        }
-      });
-
-      // 5. ป้องกันลากภาพออกแบบอื่นๆ (เช่นลากภาพจาก img tag)
-      const images = document.querySelectorAll("img");
-      images.forEach(img => {
-        img.setAttribute("draggable", "false");
-        img.addEventListener("dragstart", function (e) {
-          e.preventDefault();
-          return false;
-        });
-      });
-    });
-    
-  </script>
 </body>
-
 </html>

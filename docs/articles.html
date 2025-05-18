@@ -1,53 +1,98 @@
+<!-- articles.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KONGPOB ONTONG | Articles & Projects</title>
+  <title>KONGPOB ONTONG | Articles</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <style>
+    html, body {
+  overflow-x: hidden;
+}
     body {
       margin: 0;
       font-family: 'Merriweather', serif;
       background: #f9f9f9;
       color: #333;
-      scroll-behavior: smooth;
     }
+        h1 {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
     .navbar {
       background-color: #003366;
       color: white;
-      padding: 15px 30px;
+      padding: 10px 15px;
       display: flex;
-      justify-content: flex-end;
-      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
       position: sticky;
       top: 0;
       z-index: 999;
+      flex-wrap: wrap;
     }
     .navbar a {
+      background-color: rgba(255, 255, 255, 0.1);
       color: white;
       text-decoration: none;
       font-weight: bold;
-      font-size: 16px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-size: 14px;
+    }
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.3);
+      transition: width 0.4s ease;
+      z-index: 0;
+    }
+    .navbar a:hover::after {
+      width: 100%;
     }
     .navbar a:hover {
-      text-decoration: underline;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+      text-decoration: none;
+    }
+    #theme-toggle {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 20px;
+      padding: 4px 8px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    #theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    #theme-toggle:active {
+      transform: rotate(20deg) scale(1.1);
     }
     .container {
       max-width: 900px;
       margin: 30px auto;
       background: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       padding: 30px;
       border-radius: 8px;
-    }
-    h1 {
-      color: #003366;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 700;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
     .article {
       background: #f0f4f8;
@@ -55,73 +100,81 @@
       padding: 25px 30px;
       margin-bottom: 30px;
       border-radius: 8px;
-      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
     }
     .article h3 {
-      margin-top: 0;
+      margin: 0;
       color: #003366;
-      font-weight: 700;
-      font-size: 22px;
     }
     .article p {
       line-height: 1.6;
-      margin-bottom: 15px;
-      font-size: 16px;
-      color: #222;
     }
     .article a {
       color: #0066cc;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 15px;
+      font-weight: bold;
     }
     .article a:hover {
       text-decoration: underline;
     }
-    iframe {
-      width: 100%;
-      height: 315px;
-      border: none;
-      margin-top: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+    .dark-mode .navbar {
+      background-color: #222;
+    }
+    .dark-mode .container {
+      background-color: #1e1e1e;
+    }
+    .dark-mode .article {
+      background-color: #2a2a2a;
+      border-color: #444;
+    }
+    .dark-mode .article h3 {
+      color: #66ccff;
+    }
+    .dark-mode a {
+      color: #ffffff;
+    }
+
+    .dark-mode h1 {
+      color: #ffffff;
     }
   </style>
 </head>
 <body>
-
-  <!-- NAVIGATION -->
   <div class="navbar">
     <a href="index.html">Home</a>
     <a href="profile.html">Curriculum Vitae</a>
     <a href="news.html">News</a>
     <a href="articles.html">Articles</a>
+    <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
   </div>
-
   <div class="container">
     <h1>Articles & Projects</h1>
-
     <div class="article">
       <h3>Website for Generating 3D Models from 2D Images</h3>
-      <p>
-        This innovative web application leverages state-of-the-art machine learning algorithms to convert 2D images into detailed 3D models. Designed to assist designers, developers, and creators, the platform simplifies the process of generating realistic 3D assets with ease and precision. Ongoing improvements focus on enhancing accuracy and rendering speed.
-      </p>
-      <a href="https://poligon-mkk.vercel.app/" target="_blank" rel="noopener noreferrer">
-        Explore the project on Website
-      </a>
+      <p>This innovative web application leverages state-of-the-art ML to convert 2D images into 3D models.</p>
+      <a href="https://poligon-mkk.vercel.app/" target="_blank">Explore Project</a>
     </div>
-
     <div class="article">
       <h3>Training for a Sub-40 10K Using Polarized Training</h3>
-      <p>
-        A detailed guide and personal journey toward breaking the 40-minute barrier in a 10K run. The article discusses the principles of polarized training — balancing high-intensity workouts with low-intensity endurance runs — to maximize performance and avoid burnout. This project combines sports science with practical experience to help runners achieve their best times.
-      </p>
-      <a href="#" target="_blank" rel="noopener noreferrer">
-        Read the full training plan (Coming soon)
-      </a>
+      <p>A personal journey toward sub-40min 10K using polarized training: balancing intensity with endurance.</p>
+      <a href="#">Read the full training plan (Coming soon)</a>
     </div>
-
   </div>
-
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      toggleBtn.textContent = '☀️';
+    }
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+  </script>
 </body>
 </html>

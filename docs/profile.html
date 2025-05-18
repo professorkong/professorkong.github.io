@@ -8,6 +8,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KONGPOB ONTONG | Resume</title>
   <style>
+    html, body {
+  overflow-x: hidden;
+}
     body {
       margin: 0;
       font-family: 'Merriweather', serif;
@@ -19,36 +22,127 @@
     .navbar {
       background-color: #003366;
       color: white;
-      padding: 15px 30px;
+      padding: 10px 15px;
       display: flex;
-      justify-content: flex-end;
-      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
       position: sticky;
       top: 0;
       z-index: 999;
+      flex-wrap: wrap;
+      box-sizing: border-box;
     }
 
     .navbar a {
+      background-color: rgba(255, 255, 255, 0.1);
       color: white;
       text-decoration: none;
       font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      font-size: 14px;
+    }
+
+    .navbar a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.3);
+      z-index: 0;
+      transition: width 0.4s ease;
+    }
+
+    .navbar a:hover::after {
+      width: 100%;
     }
 
     .navbar a:hover {
-      text-decoration: underline;
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+      text-decoration: none;
     }
-    .image-container {
-  position: relative;
-  display: inline-block;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-touch-callout: none; /* ป้องกันเมนูคลิกขวา iOS */
-}
 
-.image-container img {
-  pointer-events: none; /* ป้องกันการเลือกและกดภาพ */
-  display: block;
+    #theme-toggle {
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
+      border-radius: 20px;
+      padding: 4px 8px;
+      font-size: 16px;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      line-height: 1;
+    }
+
+    #theme-toggle:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    #theme-toggle:active {
+      transform: rotate(20deg) scale(1.1);
+    }
+
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+
+    .dark-mode .navbar {
+      background-color: #222;
+      color: white;
+    }
+
+    .dark-mode .navbar a {
+      color: white;
+    }
+
+    .dark-mode .container {
+      background-color: #1e1e1e;
+      color: #eee;
+    }
+
+    .dark-mode .sidebar {
+      background-color: #2a2a2a;
+      border-color: #444;
+    }
+
+    .dark-mode .sidebar p {
+      background-color: #2a2a2a;
+      color: #ffffff;
+    }
+
+    .dark-mode .main h3 {
+      color: #66ccff;
+    }
+
+    .dark-mode a {
+      color: #66ccff;
+    }
+    .dark-mode .sidebar .icons a {
+  color: white !important;
 }
+    .image-container {
+      position: relative;
+      display: inline-block;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .image-container img {
+      pointer-events: none;
+      display: block;
+    }
+
     .container {
       display: flex;
       max-width: 1000px;
@@ -124,7 +218,6 @@
       color: inherit;
       font-weight: normal;
       font-size: 14px;
-      color: #333;
     }
 
     .clean-link:hover {
@@ -132,7 +225,7 @@
       cursor: pointer;
     }
 
-        @media (max-width: 768px) {
+    @media (max-width: 768px) {
       .sidebar img {
         max-width: 180px;
         height: 180px;
@@ -160,40 +253,6 @@
       }
     }
   </style>
-  <script>
-  window.addEventListener("DOMContentLoaded", function () {
-
-    // 2. ป้องกันการลากออก (drag)
-    document.addEventListener("dragstart", function (e) {
-      e.preventDefault();
-      return false;
-    });
-
-    // 3. ป้องกันคลิกขวา
-    document.addEventListener("contextmenu", function (e) {
-      e.preventDefault();
-      return false;
-    });
-
-    // 4. ป้องกันการกด Ctrl+S หรือ Cmd+S
-    document.addEventListener("keydown", function (e) {
-      if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 's')) {
-        e.preventDefault();
-        return false;
-      }
-    });
-
-    // 5. ป้องกันลากภาพออกแบบอื่นๆ (เช่นลากภาพจาก img tag)
-    const images = document.querySelectorAll("img");
-    images.forEach(img => {
-      img.setAttribute("draggable", "false");
-      img.addEventListener("dragstart", function(e) {
-        e.preventDefault();
-        return false;
-      });
-    });
-  });
-</script>
 </head>
 <body>
   <div class="navbar">
@@ -205,15 +264,15 @@
 
   <div class="container">
     <div class="sidebar">
-    <div class="image-container">
-      <img src="Profile.jpg" alt="Profile Photo" draggable="false">
-    </div>
+      <div class="image-container">
+        <img src="Profile.jpg" alt="Profile Photo" draggable="false">
+      </div>
       <h2>Mr.Kongpob Ontong (Bs.C.)</h2>
       <p>Software Test Engineer</p>
       <a href="https://www.ttbbank.com" class="clean-link" target="_blank">TMBThanachart Bank (ttb bank)</a>
       <p>Nonthaburi, Thailand</p>
       <p>Email: kongpob.on@gmail.com</p>
-     <div class="icons">
+      <div class="icons">
         <a href="https://facebook.com/kkongpobb/" target="_blank"><i class="fab fa-facebook"></i></a>
         <a href="https://instagram.com/1404_k/" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://github.com/professorkong" target="_blank"><i class="fab fa-github"></i></a>
@@ -225,21 +284,23 @@
       <h3 id="cv">Curriculum Vitae</h3>
 
       <h4>Work Experiences</h4>
-        <ul>
+      <ul>
         <li><strong>TMBThanachart Bank (ttb bank) (May 2025 - Present)</strong><br>
-        Test Engineer Role : responsible for testing mission-critical banking systems, performing test case design, system integration testing (SIT), and ensuring software quality in collaboration with cross-functional teams.
-</li>
+          Test Engineer Role : responsible for testing mission-critical banking systems, performing test case design, system integration testing (SIT), and ensuring software quality in collaboration with cross-functional teams.
+        </li>
       </ul>
       <ul>
         <li><strong>G-Able Company (Jul 2024 - Dec 2024)</strong><br>
-        Internship Role : Software Tester for the TFEM Program (AIS Project), testing enterprise features and system integration for AIS systems.</li>
+          Internship Role : Software Tester for the TFEM Program (AIS Project), testing enterprise features and system integration for AIS systems.
+        </li>
       </ul>
 
       <h4>Educations</h4>
       <ul>
         <li><strong>Bachelor of Science in Information Technology</strong><br>
-        King Mongkut's Institute of Technology Ladkrabang (KMITL), Class of 19<br>
-        GPA: 3.xx</li>
+          King Mongkut's Institute of Technology Ladkrabang (KMITL), Class of 19<br>
+          GPA: 3.xx
+        </li>
       </ul>
 
       <h4>Publications</h4>
@@ -251,11 +312,60 @@
       <ul>
         <li>🥉 3rd Place – 12.5K Running Competition</li>
         <li>🏅 4th Place – 10K Run, Time: 45:15</li>
-        <li>🥈 2nd Place – 5K Run, Time: 18:57</li>
-        <li>🥈 2nd Place – 5K Run, Time: 19:19</li>
+        <li>🥇 2nd Place – 5K Run, Time: 18:57</li>
+        <li>🥇 2nd Place – 5K Run, Time: 19:19</li>
       </ul>
-
     </div>
   </div>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+      const toggleButton = document.createElement('button');
+      toggleButton.id = 'theme-toggle';
+      toggleButton.textContent = '🌙';
+      toggleButton.setAttribute('aria-label', 'Toggle Dark Mode');
+      document.querySelector('.navbar').appendChild(toggleButton);
+
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        toggleButton.textContent = '☀️';
+      }
+
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        toggleButton.style.transform = 'rotate(360deg)';
+        setTimeout(() => { toggleButton.style.transform = ''; }, 300);
+        const isDark = document.body.classList.contains('dark-mode');
+        toggleButton.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      });
+
+      document.addEventListener("dragstart", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+        return false;
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === 's')) {
+          e.preventDefault();
+          return false;
+        }
+      });
+
+      const images = document.querySelectorAll("img");
+      images.forEach(img => {
+        img.setAttribute("draggable", "false");
+        img.addEventListener("dragstart", function (e) {
+          e.preventDefault();
+          return false;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
