@@ -3,15 +3,16 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KONGPOB ONTONG | News</title>
   <style>
     html, body {
-  overflow-x: hidden;
-}
+      overflow-x: hidden;
+      height: 100%;
+    }
     body {
       margin: 0;
       font-family: 'Merriweather', serif;
@@ -19,17 +20,28 @@
       color: #333;
       scroll-behavior: smooth;
     }
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  padding: 20px 0;
+}
+.dark-mode .footer {
+  color: #aaa;
+}
 
     .navbar {
       background-color: #003366;
       color: white;
-      padding: 10px 15px;
+      padding: 6px 12px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 999;
       flex-wrap: wrap;
       box-sizing: border-box;
@@ -40,7 +52,7 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 16px;
+      padding: 6px 12px;
       border-radius: 20px;
       transition: all 0.3s ease;
       position: relative;
@@ -94,7 +106,7 @@
 
     .container {
       max-width: 900px;
-      margin: 30px auto;
+      margin: 65px auto 30px auto;
       background: #fff;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       padding: 30px;
@@ -196,6 +208,7 @@
     <a href="profile.html">Curriculum Vitae</a>
     <a href="news.html">News</a>
     <a href="articles.html">Articles</a>
+    <button id="theme-toggle" aria-label="Toggle Dark Mode">🌙</button>
   </div>
 
   <div class="container">
@@ -203,19 +216,20 @@
 
     <div class="news-item">
       <h3>📌 May 1, 2025 — First Day at TTB Bank</h3>
-      <p>I officially started my journey as a Software Test Engineer at TMBThanachart Bank (ttb bank)...</p>
+      <p>I officially started my journey as a Software Test Engineer at TMBThanachart Bank (ttb bank) where I am committed to ensuring the highest standards of software quality across mission-critical banking systems. My role involves designing and executing comprehensive test plans, identifying potential risks early in the development lifecycle, and collaborating closely with developers and stakeholders to deliver robust, secure, and efficient solutions that align with business objectives. I look forward to growing as a quality advocate and contributing to the continuous improvement of the bank's digital services.</p>
       <iframe src="https://www.youtube.com/embed/7VHQ5CllNss" allowfullscreen></iframe>
     </div>
 
     <div class="news-item">
       <h3>🏃‍♂️ April 10, 2025 — Personal Best: 5K in 18:57</h3>
-      <p>Achieved a new personal record running 5 kilometers in just 18 minutes and 57 seconds...</p>
+      <p>Achieved a new personal record running 5 kilometers in just 18 minutes and 57 seconds through consistent training, data-driven performance analysis, and mental discipline. This milestone not only reflects physical endurance but also reinforces my belief in structured improvement — a principle I apply equally in software testing and problem-solving.
+</p>
       <iframe src="https://www.youtube.com/embed/59bqvpwB63c" allowfullscreen></iframe>
     </div>
 
     <div class="news-item">
       <h3>🔧 February 28, 2025 — 3D Model Generation from 2D Images Project</h3>
-      <p>Developed a cutting-edge website that transforms 2D images into 3D models...</p>
+      <p>Developed a cutting-edge website that transforms 2D images into 3D models by applying deep learning algorithms, including convolutional neural networks (CNNs), to extract depth information and reconstruct 3D geometry. The system integrates web-based rendering frameworks for real-time visualization and user interaction, enabling efficient and scalable deployment for both educational and commercial applications.</p>
       <a href="https://poligon-mkk.vercel.app/" target="_blank">Explore the project on Website</a>
     </div>
 
@@ -227,29 +241,24 @@
   </div>
 
   <script>
-    window.addEventListener("DOMContentLoaded", function () {
-      const toggleButton = document.createElement('button');
-      toggleButton.id = 'theme-toggle';
-      toggleButton.textContent = '🌙';
-      toggleButton.setAttribute('aria-label', 'Toggle Dark Mode');
-      document.querySelector('.navbar').appendChild(toggleButton);
+    const toggleButton = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+      document.body.classList.add('dark-mode');
+      toggleButton.textContent = '☀️';
+    }
 
-      const currentTheme = localStorage.getItem('theme');
-      if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        toggleButton.textContent = '☀️';
-      }
-
-      toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        toggleButton.style.transform = 'rotate(360deg)';
-        setTimeout(() => { toggleButton.style.transform = ''; }, 300);
-        const isDark = document.body.classList.contains('dark-mode');
-        toggleButton.textContent = isDark ? '☀️' : '🌙';
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      });
+    toggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggleButton.style.transform = 'rotate(360deg)';
+      setTimeout(() => { toggleButton.style.transform = ''; }, 300);
+      const isDark = document.body.classList.contains('dark-mode');
+      toggleButton.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
   </script>
+    <footer class="footer">
+  Copyright &copy; 2025 Kongpob Ontong All Rights Reserved
+</footer>
 </body>
-
 </html>

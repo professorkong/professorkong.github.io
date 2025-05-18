@@ -9,8 +9,9 @@
   <title>KONGPOB ONTONG | Resume</title>
   <style>
     html, body {
-  overflow-x: hidden;
-}
+      overflow-x: hidden;
+      height: 100%;
+    }
     body {
       margin: 0;
       font-family: 'Merriweather', serif;
@@ -18,17 +19,28 @@
       color: #333;
       scroll-behavior: smooth;
     }
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  padding: 20px 0;
+}
+.dark-mode .footer {
+  color: #aaa;
+}
 
     .navbar {
       background-color: #003366;
       color: white;
-      padding: 10px 15px;
+      padding: 6px 12px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 999;
       flex-wrap: wrap;
       box-sizing: border-box;
@@ -39,7 +51,7 @@
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 16px;
+      padding: 6px 12px;
       border-radius: 20px;
       transition: all 0.3s ease;
       position: relative;
@@ -127,9 +139,11 @@
     .dark-mode a {
       color: #66ccff;
     }
+
     .dark-mode .sidebar .icons a {
-  color: white !important;
-}
+      color: white !important;
+    }
+
     .image-container {
       position: relative;
       display: inline-block;
@@ -146,7 +160,7 @@
     .container {
       display: flex;
       max-width: 1000px;
-      margin: 30px auto;
+      margin: 65px auto 30px auto; /* space for fixed navbar */
       background: #fff;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
@@ -367,5 +381,8 @@
       });
     });
   </script>
+  <footer class="footer">
+  Copyright &copy; 2025 Kongpob Ontong All Rights Reserved
+</footer>
 </body>
 </html>

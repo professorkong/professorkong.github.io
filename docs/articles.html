@@ -1,4 +1,3 @@
-<!-- articles.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,46 +9,57 @@
   <link rel="icon" href="favicon.png" type="image/png" />
   <style>
     html, body {
-  overflow-x: hidden;
-}
+      overflow-x: hidden;
+      height: 100%;
+    }
     body {
       margin: 0;
       font-family: 'Merriweather', serif;
       background: #f9f9f9;
       color: #333;
+      scroll-behavior: smooth;
     }
-        h1 {
-      color: #003366;
-      text-align: center;
-      margin-bottom: 40px;
-      font-weight: 700;
-    }
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: #777;
+  padding: 20px 0;
+}
+.dark-mode .footer {
+  color: #aaa;
+}
 
     .navbar {
       background-color: #003366;
       color: white;
-      padding: 10px 15px;
+      padding: 6px 12px;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 999;
       flex-wrap: wrap;
+      box-sizing: border-box;
     }
+
     .navbar a {
       background-color: rgba(255, 255, 255, 0.1);
       color: white;
       text-decoration: none;
       font-weight: bold;
-      padding: 8px 16px;
+      padding: 6px 12px;
       border-radius: 20px;
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      z-index: 1;
       font-size: 14px;
     }
+
     .navbar a::after {
       content: "";
       position: absolute;
@@ -58,18 +68,21 @@
       top: 0;
       left: 0;
       background: rgba(255, 255, 255, 0.3);
-      transition: width 0.4s ease;
       z-index: 0;
+      transition: width 0.4s ease;
     }
+
     .navbar a:hover::after {
       width: 100%;
     }
+
     .navbar a:hover {
       color: #fff;
       transform: translateY(-2px);
       box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
       text-decoration: none;
     }
+
     #theme-toggle {
       background-color: rgba(255, 255, 255, 0.2);
       border: none;
@@ -79,21 +92,33 @@
       cursor: pointer;
       color: white;
       transition: background-color 0.3s ease, transform 0.3s ease;
+      line-height: 1;
     }
+
     #theme-toggle:hover {
       background-color: rgba(255, 255, 255, 0.3);
     }
+
     #theme-toggle:active {
       transform: rotate(20deg) scale(1.1);
     }
+
     .container {
       max-width: 900px;
-      margin: 30px auto;
+      margin: 65px auto 30px auto;
       background: #fff;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
+
+    h1 {
+      color: #003366;
+      text-align: center;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+
     .article {
       background: #f0f4f8;
       border: 1px solid #ddd;
@@ -101,38 +126,48 @@
       margin-bottom: 30px;
       border-radius: 8px;
     }
+
     .article h3 {
       margin: 0;
       color: #003366;
     }
+
     .article p {
       line-height: 1.6;
     }
+
     .article a {
       color: #0066cc;
       text-decoration: none;
       font-weight: bold;
     }
+
     .article a:hover {
       text-decoration: underline;
     }
+
     .dark-mode {
       background-color: #121212;
       color: #eee;
     }
+
     .dark-mode .navbar {
       background-color: #222;
     }
+
     .dark-mode .container {
       background-color: #1e1e1e;
     }
+
     .dark-mode .article {
       background-color: #2a2a2a;
       border-color: #444;
     }
+
     .dark-mode .article h3 {
       color: #66ccff;
     }
+
     .dark-mode a {
       color: #ffffff;
     }
@@ -164,17 +199,24 @@
     </div>
   </div>
   <script>
-    const toggleBtn = document.getElementById('theme-toggle');
+    const toggleButton = document.getElementById('theme-toggle');
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'dark') {
       document.body.classList.add('dark-mode');
-      toggleBtn.textContent = '☀️';
+      toggleButton.textContent = '☀️';
     }
-    toggleBtn.addEventListener('click', () => {
+
+    toggleButton.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-      localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+      toggleButton.style.transform = 'rotate(360deg)';
+      setTimeout(() => { toggleButton.style.transform = ''; }, 300);
+      const isDark = document.body.classList.contains('dark-mode');
+      toggleButton.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
   </script>
+    <footer class="footer">
+  Copyright &copy; 2025 Kongpob Ontong All Rights Reserved
+</footer>
 </body>
 </html>
