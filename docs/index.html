@@ -309,17 +309,15 @@
 }
 
 .about-list li::before {
-  content: "✔";
+  content: "";
   position: absolute;
   left: 0;
-  top: 2px;
-  color: #00bfff;
-  font-weight: bold;
-  font-size: 16px;
-  opacity: 0;
-  transform: scale(0.5) rotate(-30deg);
-  animation: pulse-tick 1.5s ease-in-out infinite;
-  transform-origin: center;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="%2300bfff" d="M6 10.8L3.2 8 2 9.2 6 13.2 14 5.2 12.8 4z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 @keyframes pulse-tick {
