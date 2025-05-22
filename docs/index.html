@@ -361,7 +361,12 @@ canvas#starfield {
 .dark-mode canvas#starfield {
   display: block; /* แสดงเฉพาะเมื่อ dark-mode */
 }
-
+.webring-icon img {
+  transition: transform 0.3s ease;
+}
+.webring-icon:hover img {
+  transform: scale(1.1) rotate(5deg);
+}
   </style>
 </head>
 <body>
@@ -581,6 +586,10 @@ window.addEventListener("resize", () => {
 </script>
 
 <footer class="footer">
+  <a href="https://webring.wonderful.software/#/.com" target="_blank" style="position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
+  <img src="webring.svg" alt="Webring" width="32" height="32" style="filter: drop-shadow(0 0 2px #000);">
+</a>
+
   Copyright &copy; 2025 Kongpob Ontong All Rights Reserved
 </footer>
 
